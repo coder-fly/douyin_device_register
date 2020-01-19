@@ -4,6 +4,7 @@
 # @Email   : coderflying@163.com
 # @File    : demo2.py
 import time
+import sys
 import binascii
 import random
 import os
@@ -11,8 +12,13 @@ import urllib.request
 import subprocess
 import re
 
-nativate_path = os.path.join(os.path.dirname(__file__),"nativate")
+nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
+
+jar_path = os.path.join(nativate_path,"unidbg.jar")
+
 jni_path = os.path.join(os.path.join(nativate_path,"prebuilt"),"win64")
+
+
 os.chdir(nativate_path)
 
 mc_random = ["a","1","2","3","4","5","6","7","8","9"]
@@ -36,8 +42,7 @@ mc = get_random_mc()
 message = " ".join([gen_time,udid,openudid,mc])
 
 command = r"java -jar -Djna.library.path={} unidbg.jar {}".format(jni_path,message)
-stdout,stderr = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
-
+stdout,stderr = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).communicate()
 hex_str = re.search(r'hex=([\s\S]*?)\nsize',stdout.decode()).group(1)
 
 def hexStr_to_str(hex_str):
