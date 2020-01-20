@@ -3,6 +3,7 @@
 # @Author  : Coderfly
 # @Email   : coderflying@163.com
 # @File    : demo2.py
+import platform
 import time
 import sys
 import binascii
@@ -12,11 +13,27 @@ import urllib.request
 import subprocess
 import re
 
+def get_random_mc():
+    mc = '{}:{}:{}:{}:{}:{}'.format("".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)))
+    return mc
+
+def get_system():
+    system = platform.system()
+    if system.startswith("Win"):
+        return "win"+platform.machine()[-2:]
+    elif system.startswith("Lin"):
+        return "linux" + platform.machine()[-2:]
+    else:
+        return "osx64"
+
+system = get_system()
+
+
 nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
 
 jar_path = os.path.join(nativate_path,"unidbg.jar")
 
-jni_path = os.path.join(os.path.join(nativate_path,"prebuilt"),"win64")
+jni_path = os.path.join(os.path.join(nativate_path,"prebuilt"),system)
 
 
 os.chdir(nativate_path)
@@ -27,11 +44,6 @@ headers = {
     'User-Agent':'okhttp/3.8.1',
     'Content-Type':'application/octet-stream;tt-data=a'
 }
-
-def get_random_mc():
-    mc = '{}:{}:{}:{}:{}:{}'.format("".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)))
-    return mc
-
 
 
 gen_time = str(int(time.time()*1000))
