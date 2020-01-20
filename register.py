@@ -53,7 +53,7 @@ mc = get_random_mc()
 
 message = " ".join([gen_time,udid,openudid,mc])
 
-command = r"java -jar -Djna.library.path={} unidbg.jar {}".format(jni_path,message)
+command = r"java -jar -Djna.library.path={} -Djava.library.path={} unidbg.jar {}".format(jni_path,jni_path,message)
 stdout,stderr = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).communicate()
 hex_str = re.search(r'hex=([\s\S]*?)\nsize',stdout.decode()).group(1)
 
