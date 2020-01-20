@@ -5,13 +5,14 @@
 # @File    : demo2.py
 import platform
 import time
-import sys
 import binascii
 import random
 import os
 import urllib.request
 import subprocess
 import re
+
+os.environ['WORKON_HOME']="value"
 
 def get_random_mc():
     mc = '{}:{}:{}:{}:{}:{}'.format("".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)),"".join(random.choices(mc_random,k=2)))
@@ -27,7 +28,6 @@ def get_system():
         return "osx64"
 
 system = get_system()
-
 
 nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
 
