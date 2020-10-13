@@ -1,8 +1,9 @@
 FROM korekontrol/ubuntu-java-python3
 
 EXPOSE 5000
-WORKDIR /app
-RUN pip3 install flask \
-    && git clone https://github.com/coder-fly/douyin_device_register.git
+WORKDIR /app/douyin
+COPY  ./nativates/* /app/douyin/nativate/
+COPY ./app.py /app/douyin
+RUN pip3 install flask
 
-CMD ["python3", "/app/douyin_device_register/app.py"]
+CMD ["python3", "/app/douyin/app.py"]

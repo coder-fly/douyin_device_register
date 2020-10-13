@@ -37,10 +37,10 @@ def hexStr_to_str(hex_str):
     return str_bin
 
 os.environ['WORKON_HOME']="value"
-system = get_system()
+system = "linux64"
 nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
 jar_path = os.path.join(nativate_path,"unidbg.jar")
-jni_path = os.path.join(os.path.join(nativate_path,"prebuilt"),system)
+jni_path = os.path.join(os.path.join(nativate_path,""),system)
 os.chdir(nativate_path)
 mc_random = ["a","1","2","3","4","5","6","7","8","9"]
 headers = {
