@@ -29,7 +29,8 @@ def get_system():
 
 system = get_system()
 
-nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
+nativate_path = os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativates"),"nativate")
+
 
 jar_path = os.path.join(nativate_path,"unidbg.jar")
 

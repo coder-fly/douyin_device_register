@@ -37,7 +37,7 @@ def hexStr_to_str(hex_str):
     return str_bin
 
 os.environ['WORKON_HOME']="value"
-system = "linux64"
+system = get_system()
 nativate_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"nativate")
 jar_path = os.path.join(nativate_path,"unidbg.jar")
 jni_path = os.path.join(os.path.join(nativate_path,"prebuilt"),system)
